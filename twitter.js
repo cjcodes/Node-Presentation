@@ -9,9 +9,9 @@ var curseWords = ['anal','anus','arse','ass','ballsack','balls','bastard','bitch
 module.exports.start = function (io, hashtag) {
     module.exports.io = io;
 
-    twitter.search(hashtag, function (data) {
-        for (var i in data.statuses) {
-            notifyTweet(data.statuses[i]);
+    twitter.get('search/tweets', {q: hashtag}, function (error, tweets, response) {
+        for (var i in tweets.statuses) {
+            notifyTweet(tweets.statuses[i]);
         }
     });
 
