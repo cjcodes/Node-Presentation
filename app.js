@@ -1,7 +1,7 @@
 /**
  * Required vars
  */
-var hashtag = 'apathysucks';
+var hashtag = require('./config').twitter_hashtag;
 
 /**
  * Module dependencies.

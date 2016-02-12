@@ -13,7 +13,7 @@ var Presentation = function (hash) {
         self.slides['Twitter'] = $('<div class="slide twitter">').append($('<div class="tweets">'), $('<div class="fo-realz">').html('Tweets or it didn’t happen.<span>#DS2015</span>'));
         self.slides['Cheeky']  = $('<div class="slide cheeky">');
         self.slides['Journal'] = $('<iframe src="https://docs.google.com/presentation/d/1twkKkWqn6PCAlpNuglrPtwv1n0Lpm0d4MIhCinux5Kw/embed?start=true&loop=true&delayms=8000" frameborder="0" width="1920" height="1110"></iframe>');
-        //self.slides['Timer']  = $('<div class="slide timer">');
+        self.slides['Timer']  = $('<div class="slide timer">');
         //
         for (var i in self.slides) {
             self.$div.append(self.slides[i].hide());
