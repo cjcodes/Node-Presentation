@@ -22,8 +22,16 @@ function bind() {
             io.sockets.emit('cheeky', data);
         });
 
+        socket.on('cheeky-preview', function (data) {
+            socket.broadcast.emit('cheeky-preview', data);
+        });
+
         socket.on('donation', function (data) {
             io.sockets.emit('donation', data);
+        });
+
+        socket.on('display-timer', function (data) {
+          io.sockets.emit('timer-display', data);
         });
 
         socket.on('timer', function (data) {

@@ -13,6 +13,12 @@ socket.on('cheeky', function (text) {
     cheeky.cheekyText(text);
 });
 
+socket.on('cheeky-preview', function (text) {
+    var $div = $('#preview .cheeky div');
+    cheeky.cheekyText(text, $div);
+    $('#cheeky-input').val(text);
+});
+
 socket.on('tweet', function (tweet) {
     var t = new Tweet(tweet);
     $('.tweets').prepend(t.display());
@@ -65,4 +71,3 @@ var live = new Presentation('present');
 if ($('#preview').length > 0) {
     var p = new Presentation('preview');
 }
-

@@ -6,20 +6,30 @@ var Timer = {
 
     init: function () {
         $(document).ready(function () {
-            $('.slide.timer').append(Timer.$div);
+          $('.slide.timer').append(Timer.$div);
         });
 
         $('#start-timer').unbind().click(function (e) {
-            socket.emit('timer', parseInt($('#timer-time').val()));
+          socket.emit('timer', parseInt($('#timer-time').val()));
+        });
+
+        $('#display-timer').unbind().click(function (e) {
+          socket.emit('display-timer', parseInt($('#timer-time').val()));
         });
 
         $('#timer-time').unbind().keydown(function (e) {
-            e.stopPropagation();
+          e.stopPropagation();
+        });
+
+        socket.on('timer-display', function (data) {
+            clearTimeout(Timer.timer);
+            Timer.val = data;
+            Timer.$div.text(Timer.val);
         });
 
         socket.on('timer', function (data) {
             clearTimeout(Timer.timer);
-            Timer.val = data+1;
+            Timer.val = data;
             Timer.flip();
         });
     },
