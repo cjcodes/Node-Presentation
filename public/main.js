@@ -12,7 +12,16 @@ function handleEvent($targetHtml, type, data, keepContents) {
       $targetHtml.css('background', 'url(19.%20Voice%20of%20God.png)');
       break;
     case 'slide':
-      $targetHtml.css('background', 'url(' + data + ')');
+      if (data.endsWith('mp4')) {
+        $targetHtml.css('background', 'url(19.%20Voice%20of%20God.png)');
+        var width = $targetHtml.width();
+        var height = $targetHtml.height();
+        var $video = $(`<video src="${data}" width=${width} height=${height} autoplay></video>`);
+        $targetHtml.append($video);
+      }
+      else {
+        $targetHtml.css('background', 'url(' + data + ')');
+      }
       break;
     case 'timer-display':
       $targetHtml.append('<h1 class="countdown god-message">' + data + '</h1>');

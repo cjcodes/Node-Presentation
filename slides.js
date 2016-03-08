@@ -17,6 +17,10 @@ this.readSlides = function() {
       row = [];
     }
   });
+  if (row.length != 0) {
+    slides.unshift(row.slice());
+    row = [];
+  }
 }
 
 this.getSlides = function() {
