@@ -66,10 +66,71 @@
   font-size: 26px;
 }
 
+.present-container .god-message {
+  font-size: 108px;
+}
+
 .simulator .countdown {
   font-size: 48px;
 }
 
-.presenter, .simulator {
+.present-container, .simulator {
   background-size: cover !important;
+}
+
+.present-container {
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+}
+
+.present-container .tweet-container {
+  width: 1400px;
+  display: block;
+  margin: 0 auto;
+}
+
+.present-container .tweet {
+  height: 200px;
+  padding-top: 32px;
+  margin-bottom: 32px;
+}
+
+.present-container .tweet.odd {
+  text-align: right;
+}
+
+.present-container .tweet .tweet-photo {
+  display: inline-block;
+  height: 196px;
+  width: 196px;
+  border-radius: 16px;
+  border: 2px solid #FFF;
+}
+
+.present-container .tweet .tweet-info {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  margin: 0 16px;
+  margin-top: 8px;
+}
+
+.tweet-info p {
+  margin-top: -4px;
+  margin-bottom: 1px;
+  font-size: 28px !important;
+  vertical-align: text-top;
+  color: #FFF;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.tweet-info p .-yellow {
+  color: #fcd116 !important;
+}
+
+.tweet-info p .-black {
+  color: #111 !important;
 }

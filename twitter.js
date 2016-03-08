@@ -11,34 +11,47 @@ var client = new Twitter({
 var pastTweets = [];
 var curseWords = ['anal','anus','arse','ass','ballsack','balls','bastard','bitch','biatch','bloody','blowjob','blow job','bollock','bollok','boner','boob','bugger','bum','butt','buttplug','clitoris','cock','coon','crap','cunt','damn','dick','dildo','dyke','fag','feck','fellate','fellatio','felching','fuck','f u c k','fudgepacker','fudge packer','flange','Goddamn','God damn','hell','homo','jerk','jizz','knobend','knob end','labia','lmao','lmfao','muff','nigger','nigga','omg','penis','piss','poop','prick','pube','pussy','queer','scrotum','sex','shit','s hit','sh1t','slut','smegma','spunk','tit','tosser','turd','twat','vagina','wank','whore','wtf'];
 
+var odd = false;
 function formatTweet(data) {
-  var markup = '<p class="tweet-text">';
+  var text = '';
   var words = data.text.split(' ');
-  words.forEach(function(e) {
+  words.forEach(function(e, i) {
     if (e.indexOf('@') == 0) {
-      markup += ('<span class="-yellow"> ' + e + '</span>');
+      text += ('<span class="-yellow"> ' + e + '</span>');
     }
     else if (e.indexOf('#') == 0) {
-      markup += ('<span class="-black"> ' + e + '</span>');
+      text += ('<span class="-black"> ' + e + '</span>');
     }
     else {
-      markup += (' ' + e);
+      text += (' ' + e);
     }
   });
-  markup += ('</p>');
+  text += ('</p>');
 
-  var tweet = {
-      markup: markup,
-      handle: '@' + data.user.screen_name,
-      pic: data.user.profile_image_url.replace('_normal', '')
-  };
+  var handle = '@' + data.user.screen_name;
+  var pic = data.user.profile_image_url.replace('_normal', '');
+  var oddClass = odd ? 'odd' : '';
 
-  pastTweets.unshift(tweet);
+  var markup_photo = `<div class="tweet-photo" style="background: url(${pic})"></div>`;
+  var markup_info = `<div class="tweet-info"> <p><span class="-yellow">${handle}</span></p> <p class="tweet-text">${text}</p> </div>`;
+  var markup = `<div class="tweet ${oddClass}">`;
+  if (odd) {
+    markup += markup_info;
+    markup += markup_photo;
+  }
+  else {
+    markup += markup_photo;
+    markup += markup_info;
+  }
+  markup += '</div>';
+
+  pastTweets.unshift(markup);
   if (pastTweets.length > 6) {
     pastTweets.pop();
   }
 
-  return tweet;
+  odd = !odd;
+  return markup;
 }
 
 this.start = function(callback) {
@@ -54,8 +67,11 @@ this.start = function(callback) {
       stream.on('data', function (data) {
 
           for (var i in curseWords) {
+              if (data.text == undefined) {
+                return;
+              }
               if (data.text.toLowerCase().indexOf(curseWords[i]) >= 0) {
-                  return;
+                return;
               }
           }
 

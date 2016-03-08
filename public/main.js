@@ -25,9 +25,8 @@ function handleEvent($targetHtml, type, data, keepContents) {
       $targetHtml.find('.countdown').text(data);
       break;
     case 'twitter':
-      console.log("YUS");
-      console.log($targetHtml);
       $targetHtml.css('background', 'url(23.%20Twitter%20Screen-blank.png)');
+      $targetHtml.append('<div class="tweet-container"></div>')
       break;
     case 'tweet':
       if (Array.isArray(data)) {
@@ -36,7 +35,11 @@ function handleEvent($targetHtml, type, data, keepContents) {
         });
       }
       else {
-        $targetHtml.prepend(data.markup);
+        $targetHtml.children().prepend(data);
+        if ($('.tweet').size() > 4) {
+          console.log($('.tweet').size());
+          $('.tweet').last().remove();
+        }
       }
       break;
   }

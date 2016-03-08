@@ -41,6 +41,10 @@ io.on('connection', function (socket) {
   socket.emit('event', {state: 'preview', type: previewState.type, data: previewState.data});
   socket.emit('event', {state: 'live', type: liveState.type, data: liveState.data});
 
+  if (liveState.type == 'twitter') {
+    io.emit('event', {state: 'live', type: 'tweet', data: twitter.getPastTweets(), keep: true});
+  }
+
   socket.on('preview-event', function (data) {
     previewState.type = data.type;
     previewState.data = data.data;
