@@ -1,0 +1,75 @@
+.container__block {
+  padding-top: 8px !important;
+}
+
+.button-golive {
+  background-color: #ff4747;
+}
+
+.button-golive:hover, .button-golive:focus {
+  background-color: #fcd116;
+}
+
+.controls .form-actions {
+  text-align: left;
+}
+
+.form-actions input {
+  margin-bottom: 8px;
+}
+
+.controls-timer input {
+  max-width: 100px;
+  display: block;
+}
+
+.controls-slide:hover {
+  cursor: pointer;
+}
+
+.slides {
+  margin-top: 16px;
+}
+
+.keybinding {
+  color: #23b7fb;
+}
+
+.simulators {
+  position: fixed;
+}
+
+.simulators h3 {
+  margin-bottom: 0;
+}
+
+.simulator {
+  width: 480px;
+  height: 360px;
+  border: 1px solid #4e2b63;
+}
+
+.god-message {
+  color: #FFF;
+  font-weight: 800;
+  text-align: center;
+  /* Vertical Align */
+  position: relative;;
+  top: 50%;
+  left: 50%;
+  height: 30%;
+  width: 50%;
+  margin: -15% 0 0 -25%;
+}
+
+.simulator .god-message {
+  font-size: 26px;
+}
+
+.simulator .countdown {
+  font-size: 48px;
+}
+
+.presenter, .simulator {
+  background-size: cover !important;
+}
