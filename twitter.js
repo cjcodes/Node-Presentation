@@ -1,5 +1,5 @@
 var Twitter = new require('Twitter');
-var hashtag = '#demdebate';
+var hashtag = '#DS2016';
 
 var client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,

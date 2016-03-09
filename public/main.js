@@ -13,7 +13,7 @@ function handleEvent($targetHtml, type, data, keepContents) {
       break;
     case 'slide':
       if (data.endsWith('mp4')) {
-        $targetHtml.css('background', 'url(19.%20Voice%20of%20God.png)');
+        $targetHtml.css('background', 'url(23.%20Twitter%20Screen-blank.png)');
         var width = $targetHtml.width();
         var height = $targetHtml.height();
         var $video = $(`<video src="${data}" width=${width} height=${height} autoplay></video>`);
@@ -70,7 +70,7 @@ $(document).on('ready', function() {
   socket.on('event', function (data) {
     // What HTML are we editing?
     var $targetHtml;
-    if (data.state == 'preview') {
+    if (data.state == 'preview' && window.location.href.indexOf('admin') != -1) {
       $targetHtml = $('.-preview');
     }
     else if (data.state == 'live') {
